@@ -1,5 +1,6 @@
 package com.ecommerce.aish.store.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -17,6 +18,7 @@ public class Cart {
     private User user;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<CartItem> items = new HashSet<>();
 
     private LocalDateTime createdAt = LocalDateTime.now();
